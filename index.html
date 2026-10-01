@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Bei ♡ Apit</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #070607;
+    color: #f5eeee;
+    font-family: Georgia, serif;
+    overflow-x: hidden;
+}
+
+/* =========================
+   LOCK SCREEN
+========================= */
+
+#lockScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(circle at center,
+        #321c22 0%,
+        #140c0f 45%,
+        #050505 100%);
+
+    transition: 1s;
+}
+
+#lockScreen.open {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.lock {
+    width: 330px;
+    max-width: 90%;
+    text-align: center;
+}
+
+.lock-icon {
+    font-size: 45px;
+    margin-bottom: 20px;
+    animation: float 2s infinite;
+}
+
+.lock h1 {
+    font-size: 30px;
+    letter-spacing: 5px;
+    font-weight: normal;
+}
+
+.lock p {
+    margin-top: 10px;
+    color: #a9999c;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.dots {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 30px 0;
+}
+
+.dot {
+    width: 11px;
+    height: 11px;
+    border: 1px solid #b77b84;
+    border-radius: 50%;
+}
+
+.dot.active {
+    background: #c88992;
+    box-shadow: 0 0 12px #c88992;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 65px);
+    justify-content: center;
+    gap: 13px;
+}
+
+.key {
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+    border: 1px solid #3e292d;
+
+    background: rgba(255,255,255,.04);
+    color: white;
+
+    font-size: 19px;
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.key:hover {
+    background: #321b21;
+    border-color: #b87983;
+    transform: scale(1.06);
+}
+
+.key:active {
+    transform: scale(.9);
+}
+
+.zero {
+    grid-column: 2;
+}
+
+#error {
+    height: 25px;
+    margin-top: 18px;
+    color: #c9868f;
+    font-size: 13px;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+#website {
+    display: none;
+}
+
+#website.show {
+    display: block;
+    animation: appear 1.5s;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 25px;
+
+    background:
+        radial-gradient(circle at center,
+        #3a2026 0%,
+        #160d10 45%,
+        #050505 100%);
+}
+
+.hero small {
+    color: #b77c84;
+    letter-spacing: 5px;
+    font-size: 11px;
+}
+
+.hero h1 {
+    margin-top: 25px;
+
+    font-size: clamp(45px, 12vw, 85px);
+    font-weight: normal;
+    letter-spacing: 3px;
+}
+
+.hero .heart {
+    color: #c47782;
+}
+
+.hero p {
+    margin-top: 20px;
+
+    color: #b9aaad;
+    letter-spacing: 2px;
+}
+
+.date {
+    margin-top: 30px;
+
+    color: #91767b;
+    font-size: 12px;
+    letter-spacing: 4px;
+}
+
+.scroll {
+    margin-top: 60px;
+    color: #6e6164;
+    font-size: 11px;
+    letter-spacing: 3px;
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+section {
+    max-width: 900px;
+    margin: auto;
+    padding: 90px 20px;
+}
+
+.title {
+    text-align: center;
+    font-size: 31px;
+    font-weight: normal;
+}
+
+.subtitle {
+    text-align: center;
+    color: #827477;
+    margin-top: 12px;
+    margin-bottom: 45px;
+    font-size: 13px;
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown {
+    max-width: 650px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.time {
+    text-align: center;
+
+    padding: 25px 10px;
+
+    border: 1px solid #302124;
+    background: #0d0a0b;
+}
+
+.time span {
+    display: block;
+
+    font-size: 30px;
+    color: #d19aa1;
+}
+
+.time small {
+    color: #74676a;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+.letter {
+    max-width: 650px;
+    margin: auto;
+
+    padding: 40px;
+
+    background:
+        linear-gradient(145deg,
+        #191012,
+        #0b0809);
+
+    border: 1px solid #352326;
+
+    box-shadow: 0 20px 60px rgba(0,0,0,.5);
+}
+
+.letter h3 {
+    color: #d4a2a
